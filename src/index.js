@@ -266,7 +266,7 @@ export default class Critters {
     if (this.urlFilter ? this.urlFilter(href) : href.match(/^(https?:)?\/\//)) return Promise.resolve();
 
     // path on disk (with output.publicPath removed)
-    let normalizedPath = href.replace(/^\//, '');
+    let normalizedPath = href.replace(/^\//, '').replace(/\?\w+$/, '');
     const pathPrefix = (publicPath || '').replace(/(^\/|\/$)/g, '') + '/';
     if (normalizedPath.indexOf(pathPrefix) === 0) {
       normalizedPath = normalizedPath.substring(pathPrefix.length).replace(/^\//, '');
